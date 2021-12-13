@@ -1,5 +1,5 @@
 {
-  "homepage": "http://jonkarrer.github.io/battleship",
+  "homepage": "http://jonkarrer.github.io/brewery_test",
   "scripts": {
     "start": "snowpack dev",
     "predeploy": "npx snowpack build",
