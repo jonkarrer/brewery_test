@@ -3,6 +3,7 @@ export interface IBrewery {
   latitude: string | null;
   longitude: string | null;
   name: string;
+  city: string | null;
   phone: string;
   postal_code: string;
   state: string;
