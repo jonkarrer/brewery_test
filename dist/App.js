@@ -1,25 +1,23 @@
-import React, {useState, useEffect} from "../_snowpack/pkg/react.js";
-import logo from "./logo.svg.proxy.js";
-import "./App.css.proxy.js";
-function App({}) {
-  const [count, setCount] = useState(0);
+import React, {useEffect, useState} from "../_snowpack/pkg/react.js";
+const App = () => {
+  const [allBrews, setAllBrews] = useState([]);
+  async function getBreweries(latitude, longitude) {
+    const req = await fetch(`https://api.openbrewerydb.org/breweries?by_dist=${latitude},${longitude}`);
+    const data = await req.json();
+    setAllBrews(data);
+    console.log(data);
+  }
+  function getUserLocation() {
+    const success = (local) => getBreweries(local.coords.latitude, local.coords.longitude);
+    const error = () => alert("App will not work properly without access to your location. Please change your settings for this browser.");
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
   useEffect(() => {
-    const timer = setTimeout(() => setCount(count + 1), 1e3);
-    return () => clearTimeout(timer);
-  }, [count, setCount]);
-  return /* @__PURE__ */ React.createElement("div", {
-    className: "App"
-  }, /* @__PURE__ */ React.createElement("header", {
-    className: "App-header"
-  }, /* @__PURE__ */ React.createElement("img", {
-    src: logo,
-    className: "App-logo",
-    alt: "logo"
-  }), /* @__PURE__ */ React.createElement("p", null, "Edit ", /* @__PURE__ */ React.createElement("code", null, "src/App.tsx"), " and save to reload."), /* @__PURE__ */ React.createElement("p", null, "Page has been open for ", /* @__PURE__ */ React.createElement("code", null, count), " seconds."), /* @__PURE__ */ React.createElement("p", null, /* @__PURE__ */ React.createElement("a", {
-    className: "App-link",
-    href: "https://reactjs.org",
-    target: "_blank",
-    rel: "noopener noreferrer"
-  }, "Learn React"))));
-}
+    getUserLocation();
+  }, []);
+  return /* @__PURE__ */ React.createElement("main", null, /* @__PURE__ */ React.createElement("h1", null, "My Brew"), allBrews.map((item) => /* @__PURE__ */ React.createElement("article", {
+    className: "brewery-container",
+    key: item.id
+  }, /* @__PURE__ */ React.createElement("h3", null, item.name), /* @__PURE__ */ React.createElement("p", null, item.street != null ? item.street : "unknown"), /* @__PURE__ */ React.createElement("p", null, item.city != null ? item.city : "unknown", ", ", item.state), /* @__PURE__ */ React.createElement("p", null, item.postal_code != null ? item.postal_code : "unknown"))));
+};
 export default App;
