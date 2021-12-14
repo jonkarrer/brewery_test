@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(150, 111, 5);
+  background-color: #966f05;
 }
 
 main {
@@ -46,7 +46,7 @@ main {
   color: white;
   font-weight: 700;
 }
-.filter-wrapper:hover {
+.filter-button-wrapper:hover {
   cursor: pointer;
 }
 
@@ -59,6 +59,22 @@ main {
 }
 .dropdown-wrapper p:hover {
   text-decoration: underline white;
+}
+
+.loading-page {
+  display: grid;
+  place-content: center;
+  gap: 32px;
+
+  height: 100vh;
+  margin: auto;
+
+  text-align: center;
+  color: white;
+}
+.loading-page img {
+  width: 300px;
+  margin: auto;
 }
 
 @media (min-width: 756px) {
