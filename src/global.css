@@ -23,11 +23,13 @@ main {
   margin: 15px;
 }
 
+/* Title and Button wrapper*/
 .headline-wrapper {
   display: grid;
   gap: 20px;
 }
 
+/* Filter Component */
 .filter-button-wrapper,
 .dropdown-wrapper {
   background: linear-gradient(120deg, rgb(170, 75, 31), rgba(150, 22, 5));
@@ -36,7 +38,6 @@ main {
   border-radius: 5px;
   padding: 15px 20px;
 }
-
 .filter-button-wrapper {
   position: relative;
 
@@ -49,7 +50,6 @@ main {
 .filter-button-wrapper:hover {
   cursor: pointer;
 }
-
 .dropdown-wrapper {
   position: absolute;
   top: 60px;
@@ -61,6 +61,7 @@ main {
   text-decoration: underline white;
 }
 
+/* Loading Page Component */
 .loading-page {
   display: grid;
   place-content: center;

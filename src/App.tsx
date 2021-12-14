@@ -4,22 +4,23 @@ import { Filter } from './comps/Filter';
 import { Loading } from './comps/Loading';
 
 const App: FC = () => {
-  const [allBrews, setAllBrews] = useState([] as Array<IBrewery>);
+  const [localBrews, setLocalBrews] = useState([] as Array<IBrewery>);
   const [filter, setFilter] = useState('All');
   const [loading, setLoading] = useState(true);
-  async function getBreweries(latitude: number, longitude: number) {
+
+  async function getLocalBreweries(latitude: number, longitude: number) {
     const req = await fetch(
       `https://api.openbrewerydb.org/breweries?by_dist=${latitude},${longitude}`,
     );
     const data = await req.json();
 
-    setAllBrews(data);
+    setLocalBrews(data);
     setLoading(!loading);
   }
 
   function getUserLocation() {
     const success = (local: GeolocationPosition) =>
-      getBreweries(local.coords.latitude, local.coords.longitude);
+      getLocalBreweries(local.coords.latitude, local.coords.longitude);
 
     const error = () =>
       alert(
@@ -44,7 +45,7 @@ const App: FC = () => {
             <Filter currentFilter={filter} changeFilter={setFilter} />
           </div>
 
-          {allBrews
+          {localBrews
             .filter((item) =>
               filter === 'All'
                 ? item
