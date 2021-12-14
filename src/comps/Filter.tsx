@@ -11,9 +11,10 @@ export const Filter: FC<IFilter> = ({ currentFilter, changeFilter }) => {
   return (
     <div onClick={() => setToggle(!toggle)} className="filter-button-wrapper">
       <p>Sort by: {currentFilter}</p>
+
       <div
-        style={{ visibility: `${toggle ? 'visible' : 'hidden'}` }}
         className="dropdown-wrapper"
+        style={{ visibility: `${toggle ? 'visible' : 'hidden'}` }}
       >
         <p onClick={(e) => changeFilter(e.currentTarget.innerText)}>
           {currentFilter === 'Micro' ? 'All' : 'Micro'}

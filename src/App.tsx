@@ -16,6 +16,7 @@ const App: FC = () => {
 
     setLocalBrews(data);
     setLoading(!loading);
+    return;
   }
 
   function getUserLocation() {
@@ -27,7 +28,7 @@ const App: FC = () => {
         'App will not work properly without access to your location. Please change your privacy settings for this browser.',
       );
 
-    navigator.geolocation.getCurrentPosition(success, error);
+    return navigator.geolocation.getCurrentPosition(success, error);
   }
 
   useEffect(() => {
