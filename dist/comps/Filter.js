@@ -5,8 +5,8 @@ export const Filter = ({currentFilter, changeFilter}) => {
     onClick: () => setToggle(!toggle),
     className: "filter-button-wrapper"
   }, /* @__PURE__ */ React.createElement("p", null, "Sort by: ", currentFilter), /* @__PURE__ */ React.createElement("div", {
-    style: {visibility: `${toggle ? "visible" : "hidden"}`},
-    className: "dropdown-wrapper"
+    className: "dropdown-wrapper",
+    style: {visibility: `${toggle ? "visible" : "hidden"}`}
   }, /* @__PURE__ */ React.createElement("p", {
     onClick: (e) => changeFilter(e.currentTarget.innerText)
   }, currentFilter === "Micro" ? "All" : "Micro"), /* @__PURE__ */ React.createElement("p", {
